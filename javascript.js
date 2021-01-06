@@ -14,7 +14,12 @@ function onLocationFound(e) {
     L.marker(e.latlng).addTo(map)  //this adds a marker at the lat and long returned by the locate function.
         .bindPopup("You are within " + Math.round(radius * 3.28084) + " feet of this point").openPopup(); //this binds a popup to the marker. The text of the popup is defined here as well. Note that we multiply the radius by 3.28084 to convert the radius from meters to feet and that we use Math.round to round the conversion to the nearest whole number.
 
-    L.circle(e.latlng, radius).addTo(map); //this adds a circle to the map centered at the lat and long returned by the locate function. Its radius is set to the var radius defined above.
+        if (radius <= 100) {
+          L.circle(e.latlng, radius, {color: 'green'}).addTo(map);
+      }
+      else {
+          L.circle(e.latlng, radius, {color: 'red'}).addTo(map);
+      } //this adds a circle to the map centered at the lat and long returned by the locate function. Its radius is set to the var radius defined above.
 }
 
 map.on('locationfound', onLocationFound); //this is the event listener
