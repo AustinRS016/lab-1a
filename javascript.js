@@ -67,12 +67,10 @@ function onLocationError(e) {
 map.on('locationerror', onLocationError);
 
 
-function myfunction() {
-  alert("Click the button of the left side of the map to find your relative location. Your location information will only be used to find your location.");
-}
 
-L.easyButton('fa-globe', function(){
-  alert("Select Ok to find your location. The information will not be shared.");
+
+var button = L.easyButton('<span class="star">&target;</span>', function(){
+  alert("Select OK to find your relative location. This information will not be shared.");
   map.locate({setView: true, maxZoom: 16});
 }).addTo(map);
 
