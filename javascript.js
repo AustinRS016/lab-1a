@@ -67,10 +67,14 @@ function onLocationError(e) {
 map.on('locationerror', onLocationError);
 
 
+function myfunction() {
+  alert("Click the star button on the left side of the page to see your location and how accurate your device is at giving your location.")
+}
 
 
-var button = L.easyButton('<span class="star">&target;</span>', function(){
-  alert("Select OK to find your relative location. This information will not be shared.");
+
+var button = L.easyButton('<span>&starf;</span>', function(){
+  alert("Continue to find your relative location. This purpose of this webpage is to show how accurate your device is at giving your location. All information shared will not be saved or used outside of this website.");
   map.locate({setView: true, maxZoom: 16});
 }).addTo(map);
 
